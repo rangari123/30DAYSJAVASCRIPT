@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
+    </div>
+  </div>
+
+  <!-- <script src="clock.js"></script> -->
+
+  <script>
+    //get hands
+    const hourHand = document.querySelector(".second-hand");
+    const minsHand = document.querySelector(".min-hand");
+    const secHand = document.querySelector(".hour-hand");
+
+    // function
+    function setDate() {
+      let now = new Date();
+      //now we get the seconds  ,mins and hour
+      let seconds = now.getSeconds()
+      let mins = now.getMinutes();
+      let hours = now.getHours();
+
+      // convet the seconds to degree and then rotate
+      let secondsDegreeConvert = (seconds / 60) * 360 + 90
+      let minDegreeConvert = (mins / 60) * 360 + 90
+      let hoursDegreeConvert = (hours / 12) * 360 + 90
+
+
+      // add these values to hands 
+      secHand.style.transform = `rotate(${secondsDegreeConvert}deg)`
+      minsHand.style.transform = `rotate(${minDegreeConvert}deg)`
+      hourHand.style.transform = `rotate(${hoursDegreeConvert}deg)`
+    }
+    setInterval(setDate, 1000)
+
+  </script>
+</body>
+
+</html>
